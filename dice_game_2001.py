@@ -20,11 +20,12 @@ def get_player_input():
             size = 6
             return size
 
-            # test for d
+        # test for d
         if 'd' not in input_str:
             print("Invalid input. Try again.")
             continue
 
+        # test for valid dice size
         try:
             size = int(input_str.replace('d', ''))
             if size in size_list:
@@ -70,7 +71,6 @@ def game_2001(num=2):
     """
     player_score = 0
     comp_score = 0
-    modifier = 1
 
     print("""Press enter or enter a dice manually. 
 Possible dice sizes: D3, D4, D6, D8, D10, D12, D20, D100.
@@ -78,14 +78,6 @@ Whoever reaches 2001 points first wins.
   """)
 
     while True:
-        # print("Press enter to roll:")
-
-        # while True:
-        #   start = input()
-
-        #   if start != '':
-        #     print("Invalid input")
-        #     continue
         player_size = get_player_input()
         comp_size = size_list[random.randint(0, 7)]
 
@@ -96,6 +88,7 @@ Whoever reaches 2001 points first wins.
         comp_score = calculate_score(comp_score, comp_roll)
 
         print(f"Player: {player_size} {player_roll}, {player_score},\nComputer: {comp_size} {comp_roll}, {comp_score}")
+
         # win conditions
         if player_score > 2001 and comp_score <= 2001:
             return "\nPlayer wins! \n"
@@ -103,9 +96,4 @@ Whoever reaches 2001 points first wins.
             return "\nComputer wins! \n"
 
 
-##### TESTS
-# print(score([2, 6]))
-# print(get_player_input())
-
 print(game_2001(8))
-
