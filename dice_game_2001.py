@@ -4,6 +4,12 @@ size_list = [3, 4, 6, 8, 10, 12, 20, 100]
 
 
 def get_player_input():
+    """
+    Prompts player to input a dice side. Validated that input.
+    If dice size is valid: D3, D4, D6, D8, D10, D12, D20, D100 returns the size.
+    Else returns input message again until the conditions are met.
+    :return: int - size of the dice
+    """
     print("Press enter to roll or choose a dice:")
 
     while True:
@@ -31,10 +37,21 @@ def get_player_input():
 
 
 def dice_roll(size=6):
+    """
+    Takes size of the dice to be rolled and returns the result of the roll.
+    :param size: int - size of the dice
+    :return: int - rolled value
+    """
     return random.randint(1, size)
 
 
 def calculate_score(score, roll):
+    """
+    Takes current score and roll, returns total score after current roll has been calculated and added.
+    :param score: int - score before the current roll
+    :param roll: int - current roll value
+    :return:
+    """
     if sum(roll) == 7:
         score = score // 7
     elif sum(roll) == 11:
@@ -46,6 +63,11 @@ def calculate_score(score, roll):
 
 
 def game_2001(num=2):
+    """
+    Takes number of dices to roll. Utilizes other functions to perform the roll action until win conditions are met.
+    :param num: int - number of dices
+    :return: string - win message
+    """
     player_score = 0
     comp_score = 0
     modifier = 1
