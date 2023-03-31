@@ -1,6 +1,6 @@
 import random
 
-size_list = [3, 4, 6, 8, 10, 12, 20, 100]
+size_list = [3, 4, 6, 8, 10, 12, 20, 100]  # valid dice sizes
 
 
 def get_player_input():
