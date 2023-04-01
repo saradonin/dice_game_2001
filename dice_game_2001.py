@@ -5,7 +5,7 @@ size_list = [3, 4, 6, 8, 10, 12, 20, 100]  # valid dice sizes
 
 def get_player_input():
     """
-    Prompts player to input a dice side. Validated that input.
+    Prompts player to input a dice size. Validated that input.
     If dice size is valid: D3, D4, D6, D8, D10, D12, D20, D100 returns the size.
     Else returns input message again until the conditions are met.
     :return: int - size of the dice
@@ -66,7 +66,7 @@ def calculate_score(score, roll):
 def game_2001(num=2):
     """
     Takes number of dices to roll. Utilizes other functions to perform the roll action until win conditions are met.
-    :param num: int - number of dices
+    :param num: int - number of dice
     :return: string - win message
     """
     player_score = 0
@@ -87,7 +87,10 @@ Whoever reaches 2001 points first wins.
         player_score = calculate_score(player_score, player_roll)
         comp_score = calculate_score(comp_score, comp_roll)
 
-        print(f"Player: {player_size} {player_roll}, {player_score},\nComputer: {comp_size} {comp_roll}, {comp_score}")
+        player_roll_str = ", ".join([str(i) for i in player_roll])
+        comp_roll_str = ", ".join([str(i) for i in comp_roll])
+
+        print(f"Player rolls:   {player_roll_str}.  Score: {player_score},\nComputer rolls: {comp_roll_str}.  Score: {comp_score}")
 
         # win conditions
         if player_score > 2001 and comp_score <= 2001:
@@ -96,4 +99,4 @@ Whoever reaches 2001 points first wins.
             return "\nComputer wins! \n"
 
 
-print(game_2001(8))
+print(game_2001())
