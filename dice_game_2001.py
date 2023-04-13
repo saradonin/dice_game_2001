@@ -3,14 +3,15 @@ import random
 size_list = [3, 4, 6, 8, 10, 12, 20, 100]  # valid dice sizes
 
 
-def get_player_input():
+def get_player_input(num):
     """
     Prompts player to input a dice size. Validated that input.
     If dice size is valid: D3, D4, D6, D8, D10, D12, D20, D100 returns the size.
     Else returns input message again until the conditions are met.
+    :param num: int - number of roll
     :return: int - size of the dice
     """
-    print("Press enter to roll or choose a dice:")
+    print(f"Press enter to roll or choose {num}. dice:")
 
     while True:
         input_str = input().lower()
@@ -78,7 +79,7 @@ Whoever reaches 2001 points first wins.
   """)
 
     while True:
-        player_roll = [dice_roll(get_player_input()) for _ in range(num)]
+        player_roll = [dice_roll(get_player_input(i + 1)) for i in range(num)]
         comp_roll = [dice_roll(size_list[random.randint(0, len(size_list) - 1)]) for _ in range(num)]
 
         player_score = calculate_score(player_score, player_roll)
