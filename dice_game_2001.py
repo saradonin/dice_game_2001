@@ -78,11 +78,8 @@ Whoever reaches 2001 points first wins.
   """)
 
     while True:
-        player_size = get_player_input()
-        comp_size = size_list[random.randint(0, 7)]
-
-        player_roll = [dice_roll(player_size) for i in range(num)]
-        comp_roll = [dice_roll(comp_size) for i in range(num)]
+        player_roll = [dice_roll(get_player_input()) for _ in range(num)]
+        comp_roll = [dice_roll(size_list[random.randint(0, len(size_list) - 1)]) for _ in range(num)]
 
         player_score = calculate_score(player_score, player_roll)
         comp_score = calculate_score(comp_score, comp_roll)
@@ -90,7 +87,8 @@ Whoever reaches 2001 points first wins.
         player_roll_str = ", ".join([str(i) for i in player_roll])
         comp_roll_str = ", ".join([str(i) for i in comp_roll])
 
-        print(f"Player rolls:   {player_roll_str}.  Score: {player_score},\nComputer rolls: {comp_roll_str}.  Score: {comp_score}")
+        print(
+            f"Player rolls:   {player_roll_str}.  Score: {player_score},\nComputer rolls: {comp_roll_str}.  Score: {comp_score}")
 
         # win conditions
         if player_score > 2001 and comp_score <= 2001:
